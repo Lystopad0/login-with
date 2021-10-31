@@ -17,6 +17,7 @@ module.exports = {
       token,
       tokenSecret,
       profile: {
+        id: profile.id,
         username,
         provider,
         photo: avatar,

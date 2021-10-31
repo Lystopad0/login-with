@@ -16,6 +16,7 @@ module.exports = {
       accessToken,
       refreshToken,
       profile: {
+        id: profile.id,
         username: displayName,
         provider: 'spotify',
         photo: photos && photos[0] ? photos[0].value : null

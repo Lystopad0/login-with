@@ -21,6 +21,7 @@ module.exports = {
       accessToken,
       refreshToken,
       profile: {
+        id: profile.id,
         username,
         name: displayName,
         provider: 'github',

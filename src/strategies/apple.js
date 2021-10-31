@@ -11,7 +11,6 @@ module.exports = {
     }
   },
   toUser: (accessToken, refreshToken, profile, done) => {
-    console.log(accessToken, refreshToken, profile)
     done(null, {
       accessToken,
       refreshToken,

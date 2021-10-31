@@ -1,5 +1,5 @@
 module.exports = {
-  Ctor: require('passport-google-oauth20').Strategy,
+  Ctor: require('passport-google-oauth2').Strategy,
   getConfig: (env, callbackURL) => {
     const clientID = env.LW_GOOGLE_CLIENTID
     const clientSecret = env.LW_GOOGLE_CLIENTSECRET
