@@ -8,7 +8,8 @@ module.exports = {
         clientID,
         clientSecret,
         callbackURL,
-        state: true
+        state: true,
+        scope: ['r_liteprofile'],
       }
     }
   },
