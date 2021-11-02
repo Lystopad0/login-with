@@ -11,18 +11,15 @@ module.exports = {
       }
     }
   },
-  toUser: (token, tokenSecret, profile, done) => {
-    const {id, photos, provider, username, displayName} = profile
+  toUser: (accessToken, tokenSecret, profile, done) => {
+    profile.fullname = profile.displayName
+    profile.photo = profile.photos[0].value
+    profile.provider = 'twitter'
+
     done(null, {
-      token,
+      accessToken,
       tokenSecret,
-      profile: {
-        id,
-        username,
-        provider,
-        photo: photos[0].value,
-        name: displayName
-      }
+      profile
     })
   }
 }

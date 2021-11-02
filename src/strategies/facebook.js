@@ -8,31 +8,20 @@ module.exports = {
         clientID,
         clientSecret,
         callbackURL,
-        profileFields: ['displayName', 'name', 'photos']
+        profileFields: ['displayName', 'name', 'photos', 'email']
       }
     }
   },
   toUser: (accessToken, refreshToken, profile, done) => {
-    let name
-    if (profile.name) {
-      if (profile.name.givenName && profile.name.familyName) {
-        name = `${profile.name.givenName} ${profile.name.familyName}`
-      } else if (profile.name.givenName) {
-        name = profile.name.givenName
-      } else if (profile.name.familyName) {
-        name = profile.name.familyName
-      }
-    }
+    profile.fullname  = [profile.name.givenName, profile.name.familyName].filter(x => x).join(' ')
+    profile.username = profile.displayName
+    profile.provider= 'facebook'
+    profile.phot = profile.photos && profile.photos[0] ? profile.photos[0].value : null
+
     done(null, {
       accessToken,
       refreshToken,
-      profile: {
-        id: profile.id,
-        username: profile.displayName,
-        provider: 'facebook',
-        name,
-        photo: profile.photos && profile.photos[0] ? profile.photos[0].value : null
-      }
+      profile,
     })
   }
 }
