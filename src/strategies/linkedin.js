@@ -9,15 +9,18 @@ module.exports = {
         clientSecret,
         callbackURL,
         state: true,
-        scope: ['r_liteprofile'],
+        scope: ['r_liteprofile', 'r_emailaddress'],
       }
     }
   },
   toUser: (accessToken, refreshToken, profile, done) => {
     profile.fullname  = [profile.name.givenName, profile.name.familyName].filter(x => x).join(' ')
     profile.username = profile.displayName
-    profile.provider = 'linkedin'
     profile.photo = profile.photos && profile.photos[0] ? profile.photos[0].value : null
+    delete profile._raw
+    delete profile._json
+    delete profile._emailRaw
+    delete profile._emailJson
 
     done(null, {
       accessToken,

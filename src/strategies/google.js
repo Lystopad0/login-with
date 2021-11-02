@@ -12,12 +12,13 @@ module.exports = {
     }
   },
   preHook: (req, opts) => {
-    opts.scope = ['profile', 'userinfo.email']
+    opts.scope = ['profile', 'email']
   },
   toUser: (accessToken, refreshToken, profile, done) => {
     profile.name = profile.username = profile.displayName
-    profile.provider = 'google'
     profile.photo = profile.photos[0] ? profile.photos[0].value : null
+    delete profile._raw
+    delete profile._json
 
     done(null, {
       accessToken,

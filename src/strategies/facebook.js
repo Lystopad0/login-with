@@ -15,8 +15,9 @@ module.exports = {
   toUser: (accessToken, refreshToken, profile, done) => {
     profile.fullname  = [profile.name.givenName, profile.name.familyName].filter(x => x).join(' ')
     profile.username = profile.displayName
-    profile.provider= 'facebook'
-    profile.phot = profile.photos && profile.photos[0] ? profile.photos[0].value : null
+    profile.photo = profile.photos && profile.photos[0] ? profile.photos[0].value : null
+    delete profile._raw
+    delete profile._json
 
     done(null, {
       accessToken,

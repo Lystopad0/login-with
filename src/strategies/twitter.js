@@ -14,7 +14,8 @@ module.exports = {
   toUser: (accessToken, tokenSecret, profile, done) => {
     profile.fullname = profile.displayName
     profile.photo = profile.photos[0].value
-    profile.provider = 'twitter'
+    delete profile._raw
+    delete profile._json
 
     done(null, {
       accessToken,
