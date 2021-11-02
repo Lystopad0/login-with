@@ -9,7 +9,7 @@ module.exports = {
         clientSecret,
         callbackURL,
         state: true,
-        scope: ['r_liteprofile', 'r_emailaddress'],
+        scope: ['r_liteprofile'],
       }
     }
   },
@@ -17,6 +17,7 @@ module.exports = {
     profile.fullname  = [profile.name.givenName, profile.name.familyName].filter(x => x).join(' ')
     profile.username = profile.displayName
     profile.photo = profile.photos && profile.photos[0] ? profile.photos[0].value : null
+
     delete profile._raw
     delete profile._json
     delete profile._emailRaw
