@@ -47,6 +47,7 @@ describe('the strategies module', () => {
         }],
         name: {
           familyName: 'doe',
+
           givenName: 'john'
         }
       }

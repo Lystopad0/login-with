@@ -3,6 +3,7 @@ module.exports = {
   getConfig: (env, callbackURL) => {
     const clientID = env.LW_LINKEDIN_CLIENTID
     const clientSecret = env.LW_LINKEDIN_CLIENTSECRET
+
     if (clientID && clientSecret) {
       return {
         clientID,

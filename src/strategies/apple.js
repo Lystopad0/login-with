@@ -11,12 +11,11 @@ module.exports = {
     }
   },
   toUser: (accessToken, refreshToken, profile, done) => {
+    profile.provider='apple'
     done(null, {
       accessToken,
       refreshToken,
-      profile: {
-        provider: 'apple',
-      }
+      profile
     })
   }
 }
