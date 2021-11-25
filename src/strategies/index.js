@@ -11,7 +11,8 @@ const strategies = {
   strava: require('./strava'),
   twitter: require('./twitter'),
   apple: require('./apple'),
-  test: require('./test')
+  telegram: require('./telegram'),
+  test: require('./test'),
 }
 
 const isConfigured = strategy => strategy.config

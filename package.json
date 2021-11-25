@@ -49,6 +49,7 @@
     "passport-spotify": "^1.0.1",
     "passport-strategy": "^1.0.0",
     "passport-strava": "^0.2.0",
+    "passport-telegram-official": "^2.0.1",
     "passport-twitter": "^1.0.4"
   },
   "devDependencies": {
