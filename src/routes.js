@@ -47,9 +47,10 @@ module.exports = ({
             domain: cookieDomain,
             maxAge
           }))
-          if (user.failure || req.session.failure) {
+          const failure = String(user.failure || req.session.failure)
+          if (failure) {
             delete user.failure
-            return res.redirect(decodeURIComponent(user.failure || req.session.failure))
+            return res.redirect(decodeURIComponent(failure))
           }
         } else if (user) {
           res.cookie(tokenCookieName, jwt.sign(user, tokenSecret), cookieOpts({
@@ -62,9 +63,10 @@ module.exports = ({
             domain: cookieDomain,
             maxAge
           }))
-          if (user.success || req.session.success) {
+          const success = String(user.success || req.session.success)
+          if (success) {
             delete user.success
-            return res.redirect(decodeURIComponent(user.success || req.session.success))
+            return res.redirect(decodeURIComponent(success))
           }
         }
         return res.json({error, user})
